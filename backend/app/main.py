@@ -52,7 +52,7 @@ app.add_middleware(
 )
 
 # --- Register Routers ---
-from app.routers import predict, ingest, poison, metrics, admin, stream, auth
+from app.routers import predict, ingest, poison, metrics, admin, stream, auth, portfolio, investments_admin
 
 app.include_router(auth.router, tags=["auth"])
 app.include_router(predict.router, tags=["predict"])
@@ -61,6 +61,8 @@ app.include_router(poison.router, tags=["poison"])
 app.include_router(metrics.router, tags=["metrics"])
 app.include_router(admin.router, tags=["admin"])
 app.include_router(stream.router, tags=["stream"])
+app.include_router(portfolio.router, tags=["portfolio"])
+app.include_router(investments_admin.router, tags=["admin-investments"])
 
 
 @app.get("/health")

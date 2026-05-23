@@ -132,3 +132,49 @@ export async function fetchHealth() {
 export function createEventSource(): EventSource {
   return new EventSource('/stream/events');
 }
+
+// ── Portfolio (user) ──
+export async function fetchPortfolio() {
+  return request<any>('/portfolio');
+}
+export async function fetchHolding(ticker: string) {
+  return request<any>(`/portfolio/${ticker}`);
+}
+export async function investInTicker(ticker: string, amount_inr: number) {
+  return request<any>('/portfolio/invest', {
+    method: 'POST',
+    body: JSON.stringify({ ticker, amount_inr }),
+  });
+}
+export async function withdrawFromTicker(ticker: string, units: number) {
+  return request<any>('/portfolio/withdraw', {
+    method: 'POST',
+    body: JSON.stringify({ ticker, units }),
+  });
+}
+export async function fetchTransactionHistory(ticker?: string, page = 1, limit = 20) {
+  let url = `/portfolio/history?page=${page}&limit=${limit}`;
+  if (ticker) url += `&ticker=${ticker}`;
+  return request<any>(url);
+}
+
+// ── Admin: Investments ──
+export async function fetchAllInvestments(page = 1, limit = 20, email?: string, ticker?: string) {
+  let url = `/admin/investments?page=${page}&limit=${limit}`;
+  if (email) url += `&email=${encodeURIComponent(email)}`;
+  if (ticker) url += `&ticker=${ticker}`;
+  return request<any>(url);
+}
+export async function fetchUserInvestments(email: string) {
+  return request<any>(`/admin/investments/${encodeURIComponent(email)}`);
+}
+export async function fetchInvestmentsSummary() {
+  return request<any>('/admin/investments/summary');
+}
+export async function fetchAllTransactions(page = 1, limit = 20, email?: string, ticker?: string, action?: string) {
+  let url = `/admin/investments/transactions?page=${page}&limit=${limit}`;
+  if (email) url += `&email=${encodeURIComponent(email)}`;
+  if (ticker) url += `&ticker=${ticker}`;
+  if (action) url += `&action=${action}`;
+  return request<any>(url);
+}

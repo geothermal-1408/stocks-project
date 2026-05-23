@@ -1,0 +1,3 @@
+# Held-out clean validation set.
+# Populated once at bootstrap from verified clean OHLCV.
+# Never added to, never trained on — used only for deployment gate MAE evaluation.

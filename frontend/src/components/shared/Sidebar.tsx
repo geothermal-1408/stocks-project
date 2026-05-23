@@ -1,20 +1,26 @@
-import { BarChart2, Activity, AlertTriangle, Settings, Users, LogOut } from 'lucide-react';
+import { BarChart2, Activity, AlertTriangle, Settings, Users, LogOut, Wallet, TrendingUp } from 'lucide-react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
 
 const ALL_NAV_ITEMS = [
-  { to: '/', icon: BarChart2, label: 'Prediction', adminOnly: false },
-  { to: '/dashboard', icon: Activity, label: 'Dashboard', adminOnly: false },
-  { to: '/poison', icon: AlertTriangle, label: 'Poison Log', adminOnly: true },
-  { to: '/admin', icon: Settings, label: 'Admin', adminOnly: true },
-  { to: '/users', icon: Users, label: 'Users', adminOnly: true },
+  { to: '/', icon: BarChart2, label: 'Prediction', adminOnly: false, userOnly: false },
+  { to: '/dashboard', icon: Activity, label: 'Dashboard', adminOnly: false, userOnly: false },
+  { to: '/portfolio', icon: Wallet, label: 'Portfolio', adminOnly: false, userOnly: true },
+  { to: '/poison', icon: AlertTriangle, label: 'Poison Log', adminOnly: true, userOnly: false },
+  { to: '/admin', icon: Settings, label: 'Admin', adminOnly: true, userOnly: false },
+  { to: '/users', icon: Users, label: 'Users', adminOnly: true, userOnly: false },
+  { to: '/admin/investments', icon: TrendingUp, label: 'User Investments', adminOnly: true, userOnly: false },
 ];
 
 export default function Sidebar() {
   const { isAdmin, user, logout } = useAuthStore();
   const navigate = useNavigate();
 
-  const navItems = ALL_NAV_ITEMS.filter(item => !item.adminOnly || isAdmin);
+  const navItems = ALL_NAV_ITEMS.filter(item => {
+    if (item.adminOnly && !isAdmin) return false;
+    if (item.userOnly && isAdmin) return false;
+    return true;
+  });
 
   const handleLogout = () => {
     logout();

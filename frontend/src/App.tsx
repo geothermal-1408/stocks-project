@@ -11,6 +11,8 @@ import DashboardPage from './pages/DashboardPage';
 import PoisonLogPage from './pages/PoisonLogPage';
 import AdminPage from './pages/AdminPage';
 import UsersPage from './pages/UsersPage';
+import PortfolioPage from './pages/PortfolioPage';
+import UserInvestmentsPage from './pages/UserInvestmentsPage';
 
 function AppContent() {
   const { poisonFlashActive } = useAppStore();
@@ -55,6 +57,16 @@ function AppContent() {
           <Route path="/users" element={
             <ProtectedRoute requireAdmin>
               <UsersPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/portfolio" element={
+            <ProtectedRoute>
+              <PortfolioPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/admin/investments" element={
+            <ProtectedRoute requireAdmin>
+              <UserInvestmentsPage />
             </ProtectedRoute>
           } />
           <Route path="/login" element={<Navigate to="/" replace />} />

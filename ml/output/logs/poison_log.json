@@ -1,0 +1,982 @@
+[
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=45.14",
+    "window_start": "2024-04-26",
+    "window_end": "2024-06-07",
+    "timestamp": "2026-04-24T03:27:12.075367"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=54.03",
+    "window_start": "2024-04-29",
+    "window_end": "2024-06-10",
+    "timestamp": "2026-04-24T03:27:12.075378"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=17.77",
+    "window_start": "2024-04-30",
+    "window_end": "2024-06-11",
+    "timestamp": "2026-04-24T03:27:12.075383"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=23.81",
+    "window_start": "2024-05-01",
+    "window_end": "2024-06-12",
+    "timestamp": "2026-04-24T03:27:12.075387"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=26.44",
+    "window_start": "2024-05-02",
+    "window_end": "2024-06-13",
+    "timestamp": "2026-04-24T03:27:12.075390"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=22.64",
+    "window_start": "2024-05-03",
+    "window_end": "2024-06-14",
+    "timestamp": "2026-04-24T03:27:12.075394"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=9.27",
+    "window_start": "2024-05-06",
+    "window_end": "2024-06-17",
+    "timestamp": "2026-04-24T03:27:12.075398"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=7.49",
+    "window_start": "2024-05-07",
+    "window_end": "2024-06-18",
+    "timestamp": "2026-04-24T03:27:12.075401"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=6.02",
+    "window_start": "2024-05-08",
+    "window_end": "2024-06-20",
+    "timestamp": "2026-04-24T03:27:12.075405"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.29",
+    "window_start": "2024-05-09",
+    "window_end": "2024-06-21",
+    "timestamp": "2026-04-24T03:27:12.075409"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.00",
+    "window_start": "2024-05-10",
+    "window_end": "2024-06-24",
+    "timestamp": "2026-04-24T03:27:12.075412"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.01",
+    "window_start": "2024-05-13",
+    "window_end": "2024-06-25",
+    "timestamp": "2026-04-24T03:27:12.075416"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.29",
+    "window_start": "2024-05-14",
+    "window_end": "2024-06-26",
+    "timestamp": "2026-04-24T03:27:12.075419"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.09",
+    "window_start": "2024-05-15",
+    "window_end": "2024-06-27",
+    "timestamp": "2026-04-24T03:27:12.075423"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.27",
+    "window_start": "2024-05-16",
+    "window_end": "2024-06-28",
+    "timestamp": "2026-04-24T03:27:12.075426"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.81",
+    "window_start": "2024-05-17",
+    "window_end": "2024-07-01",
+    "timestamp": "2026-04-24T03:27:12.075430"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.06",
+    "window_start": "2024-05-20",
+    "window_end": "2024-07-02",
+    "timestamp": "2026-04-24T03:27:12.075433"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.02",
+    "window_start": "2024-05-21",
+    "window_end": "2024-07-03",
+    "timestamp": "2026-04-24T03:27:12.075451"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.38",
+    "window_start": "2024-05-22",
+    "window_end": "2024-07-05",
+    "timestamp": "2026-04-24T03:27:12.075456"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.45",
+    "window_start": "2024-05-23",
+    "window_end": "2024-07-08",
+    "timestamp": "2026-04-24T03:27:12.075459"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.60",
+    "window_start": "2024-05-24",
+    "window_end": "2024-07-09",
+    "timestamp": "2026-04-24T03:27:12.075463"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=6.07",
+    "window_start": "2024-05-28",
+    "window_end": "2024-07-10",
+    "timestamp": "2026-04-24T03:27:12.075466"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.40",
+    "window_start": "2024-05-29",
+    "window_end": "2024-07-11",
+    "timestamp": "2026-04-24T03:27:12.075470"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.73",
+    "window_start": "2024-05-30",
+    "window_end": "2024-07-12",
+    "timestamp": "2026-04-24T03:27:12.075474"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=6.15",
+    "window_start": "2024-05-31",
+    "window_end": "2024-07-15",
+    "timestamp": "2026-04-24T03:27:12.075477"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=6.13",
+    "window_start": "2024-06-03",
+    "window_end": "2024-07-16",
+    "timestamp": "2026-04-24T03:27:12.075481"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.32",
+    "window_start": "2024-06-04",
+    "window_end": "2024-07-17",
+    "timestamp": "2026-04-24T03:27:12.075484"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.68",
+    "window_start": "2024-06-05",
+    "window_end": "2024-07-18",
+    "timestamp": "2026-04-24T03:27:12.075488"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.58",
+    "window_start": "2024-06-06",
+    "window_end": "2024-07-19",
+    "timestamp": "2026-04-24T03:27:12.075491"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.48",
+    "window_start": "2024-06-07",
+    "window_end": "2024-07-22",
+    "timestamp": "2026-04-24T03:27:12.075495"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.50",
+    "window_start": "2024-06-10",
+    "window_end": "2024-07-23",
+    "timestamp": "2026-04-24T03:27:12.075498"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.75",
+    "window_start": "2024-06-11",
+    "window_end": "2024-07-24",
+    "timestamp": "2026-04-24T03:27:12.075502"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.32",
+    "window_start": "2024-06-12",
+    "window_end": "2024-07-25",
+    "timestamp": "2026-04-24T03:27:12.075506"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.00",
+    "window_start": "2024-06-13",
+    "window_end": "2024-07-26",
+    "timestamp": "2026-04-24T03:27:12.075509"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "volume_spike:ratio=5.8",
+    "window_start": "2024-08-09",
+    "window_end": "2024-09-20",
+    "timestamp": "2026-04-24T03:27:12.075513"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.31",
+    "window_start": "2024-10-28",
+    "window_end": "2024-12-09",
+    "timestamp": "2026-04-24T03:27:12.075516"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.46",
+    "window_start": "2024-10-29",
+    "window_end": "2024-12-10",
+    "timestamp": "2026-04-24T03:27:12.075520"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.30",
+    "window_start": "2024-10-30",
+    "window_end": "2024-12-11",
+    "timestamp": "2026-04-24T03:27:12.075523"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.58",
+    "window_start": "2024-10-31",
+    "window_end": "2024-12-12",
+    "timestamp": "2026-04-24T03:27:12.075527"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.70",
+    "window_start": "2024-11-01",
+    "window_end": "2024-12-13",
+    "timestamp": "2026-04-24T03:27:12.075530"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.21",
+    "window_start": "2024-11-04",
+    "window_end": "2024-12-16",
+    "timestamp": "2026-04-24T03:27:12.075534"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.66",
+    "window_start": "2024-11-05",
+    "window_end": "2024-12-17",
+    "timestamp": "2026-04-24T03:27:12.075538"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.88",
+    "window_start": "2024-11-06",
+    "window_end": "2024-12-18",
+    "timestamp": "2026-04-24T03:27:12.075541"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.20",
+    "window_start": "2024-11-07",
+    "window_end": "2024-12-19",
+    "timestamp": "2026-04-24T03:27:12.075545"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.99",
+    "window_start": "2024-11-08",
+    "window_end": "2024-12-20",
+    "timestamp": "2026-04-24T03:27:12.075548"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.12",
+    "window_start": "2024-11-11",
+    "window_end": "2024-12-23",
+    "timestamp": "2026-04-24T03:27:12.075552"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.61",
+    "window_start": "2024-11-12",
+    "window_end": "2024-12-24",
+    "timestamp": "2026-04-24T03:27:12.075555"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.76",
+    "window_start": "2024-11-13",
+    "window_end": "2024-12-26",
+    "timestamp": "2026-04-24T03:27:12.075559"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.20",
+    "window_start": "2024-11-14",
+    "window_end": "2024-12-27",
+    "timestamp": "2026-04-24T03:27:12.075563"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.67",
+    "window_start": "2024-11-15",
+    "window_end": "2024-12-30",
+    "timestamp": "2026-04-24T03:27:12.075566"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.37",
+    "window_start": "2024-11-18",
+    "window_end": "2024-12-31",
+    "timestamp": "2026-04-24T03:27:12.075570"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.27",
+    "window_start": "2024-11-19",
+    "window_end": "2025-01-02",
+    "timestamp": "2026-04-24T03:27:12.075573"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.23",
+    "window_start": "2024-11-20",
+    "window_end": "2025-01-03",
+    "timestamp": "2026-04-24T03:27:12.075577"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.57",
+    "window_start": "2024-11-21",
+    "window_end": "2025-01-06",
+    "timestamp": "2026-04-24T03:27:12.075580"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.08",
+    "window_start": "2024-11-22",
+    "window_end": "2025-01-07",
+    "timestamp": "2026-04-24T03:27:12.075584"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.14",
+    "window_start": "2024-11-25",
+    "window_end": "2025-01-08",
+    "timestamp": "2026-04-24T03:27:12.075587"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-3.42",
+    "window_start": "2025-02-21",
+    "window_end": "2025-04-03",
+    "timestamp": "2026-04-24T03:27:12.075591"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-4.97",
+    "window_start": "2025-02-24",
+    "window_end": "2025-04-04",
+    "timestamp": "2026-04-24T03:27:12.075594"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-5.70",
+    "window_start": "2025-02-25",
+    "window_end": "2025-04-07",
+    "timestamp": "2026-04-24T03:27:12.075598"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-6.63",
+    "window_start": "2025-02-26",
+    "window_end": "2025-04-08",
+    "timestamp": "2026-04-24T03:27:12.075602"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-3.91",
+    "window_start": "2025-02-27",
+    "window_end": "2025-04-09",
+    "timestamp": "2026-04-24T03:27:12.075606"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-4.79",
+    "window_start": "2025-02-28",
+    "window_end": "2025-04-10",
+    "timestamp": "2026-04-24T03:27:12.075610"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-4.00",
+    "window_start": "2025-03-03",
+    "window_end": "2025-04-11",
+    "timestamp": "2026-04-24T03:27:12.075629"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-3.56",
+    "window_start": "2025-03-04",
+    "window_end": "2025-04-14",
+    "timestamp": "2026-04-24T03:27:12.075633"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-3.60",
+    "window_start": "2025-03-05",
+    "window_end": "2025-04-15",
+    "timestamp": "2026-04-24T03:27:12.075636"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-4.41",
+    "window_start": "2025-03-06",
+    "window_end": "2025-04-16",
+    "timestamp": "2026-04-24T03:27:12.075640"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-4.15",
+    "window_start": "2025-03-07",
+    "window_end": "2025-04-17",
+    "timestamp": "2026-04-24T03:27:12.075643"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-4.57",
+    "window_start": "2025-03-10",
+    "window_end": "2025-04-21",
+    "timestamp": "2026-04-24T03:27:12.075647"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-3.87",
+    "window_start": "2025-03-11",
+    "window_end": "2025-04-22",
+    "timestamp": "2026-04-24T03:27:12.075650"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-3.30",
+    "window_start": "2025-03-12",
+    "window_end": "2025-04-23",
+    "timestamp": "2026-04-24T03:27:12.075654"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "flash_crash:swing=0.167",
+    "window_start": "2025-03-13",
+    "window_end": "2025-04-24",
+    "timestamp": "2026-04-24T03:27:12.075657"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "flash_crash:swing=0.167",
+    "window_start": "2025-03-14",
+    "window_end": "2025-04-25",
+    "timestamp": "2026-04-24T03:27:12.075661"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "flash_crash:swing=0.167",
+    "window_start": "2025-03-17",
+    "window_end": "2025-04-28",
+    "timestamp": "2026-04-24T03:27:12.075664"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "flash_crash:swing=0.167",
+    "window_start": "2025-03-18",
+    "window_end": "2025-04-29",
+    "timestamp": "2026-04-24T03:27:12.075668"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "flash_crash:swing=0.167",
+    "window_start": "2025-03-19",
+    "window_end": "2025-04-30",
+    "timestamp": "2026-04-24T03:27:12.075671"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "flash_crash:swing=0.167",
+    "window_start": "2025-03-20",
+    "window_end": "2025-05-01",
+    "timestamp": "2026-04-24T03:27:12.075675"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "flash_crash:swing=0.167",
+    "window_start": "2025-03-21",
+    "window_end": "2025-05-02",
+    "timestamp": "2026-04-24T03:27:12.075679"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-3.27",
+    "window_start": "2025-03-24",
+    "window_end": "2025-05-05",
+    "timestamp": "2026-04-24T03:27:12.075682"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-3.27",
+    "window_start": "2025-03-25",
+    "window_end": "2025-05-06",
+    "timestamp": "2026-04-24T03:27:12.075686"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-3.47",
+    "window_start": "2025-03-26",
+    "window_end": "2025-05-07",
+    "timestamp": "2026-04-24T03:27:12.075689"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-3.35",
+    "window_start": "2025-03-27",
+    "window_end": "2025-05-08",
+    "timestamp": "2026-04-24T03:27:12.075693"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=-3.26",
+    "window_start": "2025-03-28",
+    "window_end": "2025-05-09",
+    "timestamp": "2026-04-24T03:27:12.075696"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "flash_crash:swing=0.167",
+    "window_start": "2025-03-31",
+    "window_end": "2025-05-12",
+    "timestamp": "2026-04-24T03:27:12.075700"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "flash_crash:swing=0.167",
+    "window_start": "2025-04-01",
+    "window_end": "2025-05-13",
+    "timestamp": "2026-04-24T03:27:12.075703"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "flash_crash:swing=0.167",
+    "window_start": "2025-04-02",
+    "window_end": "2025-05-14",
+    "timestamp": "2026-04-24T03:27:12.075707"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "flash_crash:swing=0.167",
+    "window_start": "2025-04-03",
+    "window_end": "2025-05-15",
+    "timestamp": "2026-04-24T03:27:12.075710"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "flash_crash:swing=0.167",
+    "window_start": "2025-04-04",
+    "window_end": "2025-05-16",
+    "timestamp": "2026-04-24T03:27:12.075714"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "flash_crash:swing=0.167",
+    "window_start": "2025-04-07",
+    "window_end": "2025-05-19",
+    "timestamp": "2026-04-24T03:27:12.075718"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "flash_crash:swing=0.167",
+    "window_start": "2025-04-08",
+    "window_end": "2025-05-20",
+    "timestamp": "2026-04-24T03:27:12.075721"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "flash_crash:swing=0.167",
+    "window_start": "2025-04-09",
+    "window_end": "2025-05-21",
+    "timestamp": "2026-04-24T03:27:12.075725"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.62",
+    "window_start": "2025-07-23",
+    "window_end": "2025-09-03",
+    "timestamp": "2026-04-24T03:27:12.075728"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.74",
+    "window_start": "2025-07-24",
+    "window_end": "2025-09-04",
+    "timestamp": "2026-04-24T03:27:12.075732"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.73",
+    "window_start": "2025-07-25",
+    "window_end": "2025-09-05",
+    "timestamp": "2026-04-24T03:27:12.075735"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.54",
+    "window_start": "2025-07-28",
+    "window_end": "2025-09-08",
+    "timestamp": "2026-04-24T03:27:12.075739"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.14",
+    "window_start": "2025-07-29",
+    "window_end": "2025-09-09",
+    "timestamp": "2026-04-24T03:27:12.075742"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.19",
+    "window_start": "2025-08-01",
+    "window_end": "2025-09-12",
+    "timestamp": "2026-04-24T03:27:12.075746"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.56",
+    "window_start": "2025-08-04",
+    "window_end": "2025-09-15",
+    "timestamp": "2026-04-24T03:27:12.075749"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.84",
+    "window_start": "2025-08-05",
+    "window_end": "2025-09-16",
+    "timestamp": "2026-04-24T03:27:12.075753"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.04",
+    "window_start": "2025-08-06",
+    "window_end": "2025-09-17",
+    "timestamp": "2026-04-24T03:27:12.075757"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.01",
+    "window_start": "2025-08-07",
+    "window_end": "2025-09-18",
+    "timestamp": "2026-04-24T03:27:12.075760"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.89",
+    "window_start": "2025-08-08",
+    "window_end": "2025-09-19",
+    "timestamp": "2026-04-24T03:27:12.075764"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=6.00",
+    "window_start": "2025-08-11",
+    "window_end": "2025-09-22",
+    "timestamp": "2026-04-24T03:27:12.075767"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.72",
+    "window_start": "2025-08-12",
+    "window_end": "2025-09-23",
+    "timestamp": "2026-04-24T03:27:12.075771"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.36",
+    "window_start": "2025-08-13",
+    "window_end": "2025-09-24",
+    "timestamp": "2026-04-24T03:27:12.075774"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.53",
+    "window_start": "2025-08-14",
+    "window_end": "2025-09-25",
+    "timestamp": "2026-04-24T03:27:12.075778"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.17",
+    "window_start": "2025-08-15",
+    "window_end": "2025-09-26",
+    "timestamp": "2026-04-24T03:27:12.075782"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.00",
+    "window_start": "2025-08-18",
+    "window_end": "2025-09-29",
+    "timestamp": "2026-04-24T03:27:12.075785"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.13",
+    "window_start": "2025-08-19",
+    "window_end": "2025-09-30",
+    "timestamp": "2026-04-24T03:27:12.075789"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.03",
+    "window_start": "2025-08-20",
+    "window_end": "2025-10-01",
+    "timestamp": "2026-04-24T03:27:12.075792"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.15",
+    "window_start": "2025-08-21",
+    "window_end": "2025-10-02",
+    "timestamp": "2026-04-24T03:27:12.075796"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=5.15",
+    "window_start": "2025-08-22",
+    "window_end": "2025-10-03",
+    "timestamp": "2026-04-24T03:27:12.075799"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.88",
+    "window_start": "2025-08-25",
+    "window_end": "2025-10-06",
+    "timestamp": "2026-04-24T03:27:12.075803"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.74",
+    "window_start": "2025-08-26",
+    "window_end": "2025-10-07",
+    "timestamp": "2026-04-24T03:27:12.075806"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.81",
+    "window_start": "2025-08-27",
+    "window_end": "2025-10-08",
+    "timestamp": "2026-04-24T03:27:12.075812"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.31",
+    "window_start": "2025-08-28",
+    "window_end": "2025-10-09",
+    "timestamp": "2026-04-24T03:27:12.075816"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.38",
+    "window_start": "2025-08-29",
+    "window_end": "2025-10-10",
+    "timestamp": "2026-04-24T03:27:12.075819"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.50",
+    "window_start": "2025-09-02",
+    "window_end": "2025-10-13",
+    "timestamp": "2026-04-24T03:27:12.075823"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.43",
+    "window_start": "2025-09-03",
+    "window_end": "2025-10-14",
+    "timestamp": "2026-04-24T03:27:12.075826"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.42",
+    "window_start": "2025-09-04",
+    "window_end": "2025-10-15",
+    "timestamp": "2026-04-24T03:27:12.075830"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.11",
+    "window_start": "2025-09-05",
+    "window_end": "2025-10-16",
+    "timestamp": "2026-04-24T03:27:12.075833"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.38",
+    "window_start": "2025-09-08",
+    "window_end": "2025-10-17",
+    "timestamp": "2026-04-24T03:27:12.075837"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.07",
+    "window_start": "2025-09-09",
+    "window_end": "2025-10-20",
+    "timestamp": "2026-04-24T03:27:12.075840"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.02",
+    "window_start": "2025-09-10",
+    "window_end": "2025-10-21",
+    "timestamp": "2026-04-24T03:27:12.075844"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.64",
+    "window_start": "2025-09-11",
+    "window_end": "2025-10-22",
+    "timestamp": "2026-04-24T03:27:12.075847"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.67",
+    "window_start": "2025-09-12",
+    "window_end": "2025-10-23",
+    "timestamp": "2026-04-24T03:27:12.075851"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.86",
+    "window_start": "2025-09-15",
+    "window_end": "2025-10-24",
+    "timestamp": "2026-04-24T03:27:12.075855"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.23",
+    "window_start": "2025-09-16",
+    "window_end": "2025-10-27",
+    "timestamp": "2026-04-24T03:27:12.075858"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.17",
+    "window_start": "2025-09-17",
+    "window_end": "2025-10-28",
+    "timestamp": "2026-04-24T03:27:12.075862"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.14",
+    "window_start": "2025-09-18",
+    "window_end": "2025-10-29",
+    "timestamp": "2026-04-24T03:27:12.075865"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=4.20",
+    "window_start": "2025-09-19",
+    "window_end": "2025-10-30",
+    "timestamp": "2026-04-24T03:27:12.075869"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.98",
+    "window_start": "2025-09-22",
+    "window_end": "2025-10-31",
+    "timestamp": "2026-04-24T03:27:12.075872"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.68",
+    "window_start": "2025-09-23",
+    "window_end": "2025-11-03",
+    "timestamp": "2026-04-24T03:27:12.075876"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.58",
+    "window_start": "2025-09-24",
+    "window_end": "2025-11-04",
+    "timestamp": "2026-04-24T03:27:12.075879"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.45",
+    "window_start": "2025-09-25",
+    "window_end": "2025-11-05",
+    "timestamp": "2026-04-24T03:27:12.075883"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.27",
+    "window_start": "2025-09-26",
+    "window_end": "2025-11-06",
+    "timestamp": "2026-04-24T03:27:12.075886"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.07",
+    "window_start": "2025-09-29",
+    "window_end": "2025-11-07",
+    "timestamp": "2026-04-24T03:27:12.075890"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.03",
+    "window_start": "2025-09-30",
+    "window_end": "2025-11-10",
+    "timestamp": "2026-04-24T03:27:12.075893"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.27",
+    "window_start": "2025-10-01",
+    "window_end": "2025-11-11",
+    "timestamp": "2026-04-24T03:27:12.075897"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.08",
+    "window_start": "2025-10-02",
+    "window_end": "2025-11-12",
+    "timestamp": "2026-04-24T03:27:12.075900"
+  },
+  {
+    "ticker": "AAPL",
+    "type": "price_outlier:sigma=3.06",
+    "window_start": "2025-10-21",
+    "window_end": "2025-12-02",
+    "timestamp": "2026-04-24T03:27:12.075904"
+  }
+]

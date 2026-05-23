@@ -31,6 +31,12 @@ dependencies = [
     "matplotlib>=3.8.0",
     "sse-starlette>=1.8.0",
     "httpx>=0.25.0",
+    "newsapi-python>=0.2.7",
+    "praw>=7.7.0",
+    "faiss-cpu>=1.7.4",
+    "chromadb>=0.4.0",
+    "sentence-transformers>=2.2.0",
+    "peft>=0.7.0",
 ]
 
 [project.optional-dependencies]
