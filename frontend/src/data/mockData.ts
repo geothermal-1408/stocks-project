@@ -35,54 +35,38 @@ function generateOHLCV(_ticker: string, days: number, basePrice: number): OHLCV[
   return data.slice(0, 90);
 }
 
-export const TICKERS = ['AAPL', 'MSFT', 'GOOG', 'NVDA'] as const;
+/** Only AAPL is supported this sprint */
+export const TICKERS = ['AAPL'] as const;
 export type Ticker = (typeof TICKERS)[number];
 
 const BASE_PRICES: Record<Ticker, number> = {
   AAPL: 183.5,
-  MSFT: 415.2,
-  GOOG: 172.8,
-  NVDA: 875.3,
 };
 
 // Generate OHLCV for each ticker
 export const OHLCV_DATA: Record<Ticker, OHLCV[]> = {
   AAPL: generateOHLCV('AAPL', 130, BASE_PRICES.AAPL),
-  MSFT: generateOHLCV('MSFT', 130, BASE_PRICES.MSFT),
-  GOOG: generateOHLCV('GOOG', 130, BASE_PRICES.GOOG),
-  NVDA: generateOHLCV('NVDA', 130, BASE_PRICES.NVDA),
 };
 
-// ── Poison annotations (3 per ticker) ──
+// ── Poison annotations (AAPL only) ──
 export const POISON_ANNOTATIONS: Record<Ticker, PoisonAnnotation[]> = {
   AAPL: [
     { date: OHLCV_DATA.AAPL[14]?.date || '2024-08-02', type: 'flash_crash', sigma: 4.2, swing_ratio: 0.121 },
     { date: OHLCV_DATA.AAPL[46]?.date || '2024-09-18', type: 'volume_spike', vol_ratio: 7.3 },
     { date: OHLCV_DATA.AAPL[77]?.date || '2024-10-30', type: 'price_outlier', sigma: 3.8 },
   ],
-  MSFT: [
-    { date: OHLCV_DATA.MSFT[20]?.date || '2024-08-12', type: 'ohlc_violation' },
-    { date: OHLCV_DATA.MSFT[55]?.date || '2024-09-27', type: 'flash_crash', swing_ratio: 0.098 },
-    { date: OHLCV_DATA.MSFT[82]?.date || '2024-11-05', type: 'regime_change' },
-  ],
-  GOOG: [
-    { date: OHLCV_DATA.GOOG[10]?.date || '2024-07-29', type: 'volume_spike', vol_ratio: 6.1 },
-    { date: OHLCV_DATA.GOOG[40]?.date || '2024-09-10', type: 'price_outlier', sigma: 3.5 },
-    { date: OHLCV_DATA.GOOG[70]?.date || '2024-10-22', type: 'stale_data' },
-  ],
-  NVDA: [
-    { date: OHLCV_DATA.NVDA[12]?.date || '2024-07-31', type: 'flash_crash', sigma: 5.1, swing_ratio: 0.155 },
-    { date: OHLCV_DATA.NVDA[50]?.date || '2024-09-23', type: 'negative_price' },
-    { date: OHLCV_DATA.NVDA[75]?.date || '2024-10-28', type: 'volume_spike', vol_ratio: 8.9 },
-  ],
 };
 
-// ── Predictions per ticker ──
+// ── Predictions (AAPL only) ──
 function makePrediction(ticker: Ticker): Prediction {
   const data = OHLCV_DATA[ticker];
   const last = data[data.length - 1];
+  // Use business day logic for pred_date
   const nextDate = new Date(last.date);
   nextDate.setDate(nextDate.getDate() + 1);
+  while (nextDate.getDay() === 0 || nextDate.getDay() === 6) {
+    nextDate.setDate(nextDate.getDate() + 1);
+  }
   const dir = Math.random() > 0.4 ? 'up' : 'down';
   const delta = dir === 'up' ? 1 + Math.random() * 3 : -(1 + Math.random() * 3);
 
@@ -112,9 +96,6 @@ function makePrediction(ticker: Ticker): Prediction {
 
 export const PREDICTIONS: Record<Ticker, Prediction> = {
   AAPL: makePrediction('AAPL'),
-  MSFT: makePrediction('MSFT'),
-  GOOG: makePrediction('GOOG'),
-  NVDA: makePrediction('NVDA'),
 };
 
 // ── Cycle history (7 cycles) ──
@@ -212,7 +193,7 @@ export const CYCLE_HISTORY: CycleRecord[] = [
   },
 ];
 
-// ── Poison Events (full log) ──
+// ── Poison Events (AAPL only) ──
 export const POISON_EVENTS: PoisonEvent[] = [
   {
     id: 'pe-001', ticker: 'AAPL', window_start: '2024-07-18', window_end: '2024-08-02',
@@ -234,60 +215,6 @@ export const POISON_EVENTS: PoisonEvent[] = [
     sigma: 3.8, swing_ratio: null, vol_ratio: null, buffered: true,
     created_at: '2024-10-30T17:08:00Z',
     window_text: 'date=2024-10-01 open=185.60 high=186.30 low=185.10 close=185.90 vol=39800000 | ... | date=2024-10-30 open=195.80 high=196.50 low=195.20 close=196.10 vol=52000000',
-  },
-  {
-    id: 'pe-004', ticker: 'MSFT', window_start: '2024-07-25', window_end: '2024-08-12',
-    poison_type: 'ohlc_violation', reason: 'High < Low detected on 2024-08-09',
-    sigma: null, swing_ratio: null, vol_ratio: null, buffered: true,
-    created_at: '2024-08-12T17:20:00Z',
-  },
-  {
-    id: 'pe-005', ticker: 'MSFT', window_start: '2024-08-28', window_end: '2024-09-27',
-    poison_type: 'flash_crash', reason: 'Intraday swing 9.8% near threshold',
-    sigma: null, swing_ratio: 0.098, vol_ratio: null, buffered: true,
-    created_at: '2024-09-27T17:10:00Z',
-  },
-  {
-    id: 'pe-006', ticker: 'GOOG', window_start: '2024-07-19', window_end: '2024-07-29',
-    poison_type: 'volume_spike', reason: 'Volume ratio 6.1x exceeded 5x threshold',
-    sigma: null, swing_ratio: null, vol_ratio: 6.1, buffered: true,
-    created_at: '2024-07-29T17:05:00Z',
-  },
-  {
-    id: 'pe-007', ticker: 'GOOG', window_start: '2024-08-12', window_end: '2024-09-10',
-    poison_type: 'price_outlier', reason: 'Close price z-score σ=3.5 exceeded threshold',
-    sigma: 3.5, swing_ratio: null, vol_ratio: null, buffered: true,
-    created_at: '2024-09-10T17:14:00Z',
-  },
-  {
-    id: 'pe-008', ticker: 'GOOG', window_start: '2024-09-22', window_end: '2024-10-22',
-    poison_type: 'stale_data', reason: 'Duplicate dates detected in window',
-    sigma: null, swing_ratio: null, vol_ratio: null, buffered: true,
-    created_at: '2024-10-22T17:22:00Z',
-  },
-  {
-    id: 'pe-009', ticker: 'NVDA', window_start: '2024-07-19', window_end: '2024-07-31',
-    poison_type: 'flash_crash', reason: 'Intraday swing 15.5% exceeded threshold',
-    sigma: 5.1, swing_ratio: 0.155, vol_ratio: null, buffered: true,
-    created_at: '2024-07-31T17:18:00Z',
-  },
-  {
-    id: 'pe-010', ticker: 'NVDA', window_start: '2024-08-25', window_end: '2024-09-23',
-    poison_type: 'negative_price', reason: 'Negative price detected in window data',
-    sigma: null, swing_ratio: null, vol_ratio: null, buffered: true,
-    created_at: '2024-09-23T17:30:00Z',
-  },
-  {
-    id: 'pe-011', ticker: 'NVDA', window_start: '2024-09-28', window_end: '2024-10-28',
-    poison_type: 'volume_spike', reason: 'Volume ratio 8.9x exceeded 5x threshold',
-    sigma: null, swing_ratio: null, vol_ratio: 8.9, buffered: true,
-    created_at: '2024-10-28T17:09:00Z',
-  },
-  {
-    id: 'pe-012', ticker: 'MSFT', window_start: '2024-10-07', window_end: '2024-11-05',
-    poison_type: 'regime_change', reason: 'Chow test p-value < 0.01 indicates structural break',
-    sigma: null, swing_ratio: null, vol_ratio: null, buffered: true,
-    created_at: '2024-11-05T17:25:00Z',
   },
   {
     id: 'pe-013', ticker: 'AAPL', window_start: '2024-10-10', window_end: '2024-11-08',
@@ -334,3 +261,4 @@ export const DEFAULT_CONFIG: AppConfig = {
   min_retain: 20,
   learning_rate: '5e-6',
 };
+

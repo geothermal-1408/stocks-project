@@ -34,11 +34,11 @@ const MOCK_ACTIVITY: ActivityRecord[] = [
   { id: 'a3', user_email: 'trader1@example.com', action: 'predict', details: 'ticker=AAPL, samples=10', created_at: '2024-11-15T15:20:00Z' },
   { id: 'a4', user_email: 'analyst@corp.io', action: 'view_page', details: 'page=/dashboard', created_at: '2024-11-15T14:55:00Z' },
   { id: 'a5', user_email: 'ops@stocksense.io', action: 'inject_poison', details: 'ticker=AAPL, type=flash_crash', created_at: '2024-11-15T14:30:00Z' },
-  { id: 'a6', user_email: 'trader1@example.com', action: 'predict', details: 'ticker=NVDA, samples=10', created_at: '2024-11-15T13:45:00Z' },
+  { id: 'a6', user_email: 'trader1@example.com', action: 'predict', details: 'ticker=AAPL, samples=10', created_at: '2024-11-15T13:45:00Z' },
   { id: 'a7', user_email: 'admin@stocksense.io', action: 'view_page', details: 'page=/poison', created_at: '2024-11-15T13:20:00Z' },
   { id: 'a8', user_email: 'intern@example.com', action: 'login', details: null, created_at: '2024-11-14T09:10:00Z' },
   { id: 'a9', user_email: 'ops@stocksense.io', action: 'trigger_ingest', details: 'ticker=AAPL', created_at: '2024-11-14T17:02:00Z' },
-  { id: 'a10', user_email: 'trader1@example.com', action: 'predict', details: 'ticker=MSFT, samples=10', created_at: '2024-11-14T16:30:00Z' },
+  { id: 'a10', user_email: 'trader1@example.com', action: 'predict', details: 'ticker=AAPL, samples=10', created_at: '2024-11-14T16:30:00Z' },
 ];
 
 const ACTION_COLORS: Record<string, string> = {

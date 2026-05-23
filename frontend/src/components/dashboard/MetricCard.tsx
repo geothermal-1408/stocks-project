@@ -2,7 +2,7 @@ import { useCountUp } from '../../hooks/useUtils';
 
 interface Props {
   label: string;
-  value: number;
+  value: number | null | undefined;
   unit?: string;
   suffix?: string;
   sparklineData: number[];
@@ -40,7 +40,8 @@ function Sparkline({ data, color }: { data: number[]; color: string }) {
 }
 
 export default function MetricCard({ label, value, unit, suffix, sparklineData, trendDirection, status }: Props) {
-  const animated = useCountUp(value, 600, label === 'DIR ACC' ? 1 : 2);
+  const hasValue = value != null && !isNaN(value);
+  const animated = useCountUp(hasValue ? value : 0, 600, label === 'DIR ACC' ? 1 : 2);
 
   const borderColor = status === 'danger' ? 'border-accent-danger'
     : status === 'warning' ? 'border-accent-warning'
@@ -51,9 +52,12 @@ export default function MetricCard({ label, value, unit, suffix, sparklineData, 
     : '#00e5a0';
 
   // Determine if current trend is healthy
-  const last = sparklineData[sparklineData.length - 1];
-  const prev = sparklineData[sparklineData.length - 2];
-  const isHealthy = trendDirection === 'up' ? last >= prev : last <= prev;
+  const validSpark = sparklineData.filter(v => v != null && !isNaN(v));
+  const last = validSpark[validSpark.length - 1];
+  const prev = validSpark[validSpark.length - 2];
+  const isHealthy = last != null && prev != null
+    ? (trendDirection === 'up' ? last >= prev : last <= prev)
+    : true;
 
   return (
     <div className={`bg-bg-card border ${borderColor} p-3 flex flex-col justify-between`}>
@@ -67,12 +71,12 @@ export default function MetricCard({ label, value, unit, suffix, sparklineData, 
       <div className="flex items-end justify-between">
         <div className="flex items-baseline gap-1">
           <span className="font-mono text-2xl text-text-primary leading-none">
-            {animated}
+            {hasValue ? animated : '—'}
           </span>
-          {unit && <span className="font-mono text-xs text-text-muted">{unit}</span>}
+          {hasValue && unit && <span className="font-mono text-xs text-text-muted">{unit}</span>}
           {suffix && <span className="font-mono text-[10px] text-text-muted">{suffix}</span>}
         </div>
-        <Sparkline data={sparklineData} color={sparkColor} />
+        {validSpark.length >= 2 && <Sparkline data={validSpark} color={sparkColor} />}
       </div>
     </div>
   );

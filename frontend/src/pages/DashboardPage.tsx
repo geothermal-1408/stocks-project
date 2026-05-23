@@ -5,22 +5,18 @@ import BufferGauge from '../components/dashboard/BufferGauge';
 import PipelineStatus from '../components/dashboard/PipelineStatus';
 import { PPLChart, MAEChart } from '../components/dashboard/Charts';
 import CycleTable from '../components/dashboard/CycleTable';
-import { CYCLE_HISTORY } from '../data/mockData';
 
 export default function DashboardPage() {
   const { pipelineState } = useAppStore();
   const { metrics, isLive } = useMetrics();
   const { latest, history, buffer_status } = metrics;
 
-  // Use real history from API if available, otherwise mock
-  const displayHistory = history?.length > 0 ? history : CYCLE_HISTORY;
-
-  // Build sparkline data from history
-  const forgetPplSpark = displayHistory.map(h => h.forget_ppl);
-  const retainPplSpark = displayHistory.map(h => h.retain_ppl);
-  const maeSpark = displayHistory.map(h => h.mae_validation);
-  const dirAccSpark = displayHistory.map(h => (h.directional_acc || 0) * 100);
-  const miaSpark = displayHistory.map(h => h.mia_auc);
+  // Build sparkline data from live history only (no mock fallback)
+  const forgetPplSpark = (history || []).map(h => h.forget_ppl);
+  const retainPplSpark = (history || []).map(h => h.retain_ppl);
+  const maeSpark = (history || []).map(h => h.mae_validation);
+  const dirAccSpark = (history || []).map(h => ((h.directional_acc || 0) * 100));
+  const miaSpark = (history || []).map(h => h.mia_auc);
 
   return (
     <div className="h-full overflow-y-auto p-4 space-y-4">
@@ -39,36 +35,36 @@ export default function DashboardPage() {
       <div className="grid grid-cols-5 gap-3">
         <MetricCard
           label="FORGET PPL"
-          value={latest.forget_ppl}
+          value={latest?.forget_ppl}
           sparklineData={forgetPplSpark}
           trendDirection="up"
           status="healthy"
         />
         <MetricCard
           label="RETAIN PPL"
-          value={latest.retain_ppl}
+          value={latest?.retain_ppl}
           sparklineData={retainPplSpark}
           trendDirection="down"
           status="healthy"
         />
         <MetricCard
           label="PRED MAE"
-          value={latest.mae_validation}
+          value={latest?.mae_validation}
           sparklineData={maeSpark}
           trendDirection="down"
-          status={latest.mae_validation > 2.0 ? 'warning' : 'healthy'}
+          status={latest?.mae_validation != null && latest.mae_validation > 2.0 ? 'warning' : 'healthy'}
         />
         <MetricCard
           label="DIR ACC"
-          value={(latest.directional_acc || 0) * 100}
+          value={latest?.directional_acc != null ? (latest.directional_acc * 100) : null}
           unit="%"
           sparklineData={dirAccSpark}
           trendDirection="up"
-          status={(latest.directional_acc || 0) >= 0.52 ? 'healthy' : 'danger'}
+          status={latest?.directional_acc != null && latest.directional_acc >= 0.52 ? 'healthy' : 'danger'}
         />
         <MetricCard
           label="MIA AUC"
-          value={latest.mia_auc}
+          value={latest?.mia_auc}
           suffix="→ 0.5 target"
           sparklineData={miaSpark}
           trendDirection="down"
@@ -77,19 +73,20 @@ export default function DashboardPage() {
 
       {/* Buffer gauge */}
       <BufferGauge
-        forgetCount={buffer_status.forget_count}
-        triggerAt={buffer_status.trigger_at}
-        minRetain={buffer_status.min_retain}
+        forgetCount={buffer_status?.forget_count ?? 0}
+        triggerAt={buffer_status?.trigger_at ?? 5}
+        minRetain={buffer_status?.min_retain ?? 20}
       />
 
       {/* Charts row */}
       <div className="grid grid-cols-2 gap-3">
-        <PPLChart history={displayHistory} />
-        <MAEChart history={displayHistory} />
+        <PPLChart history={history || []} />
+        <MAEChart history={history || []} />
       </div>
 
       {/* Cycle table */}
-      <CycleTable cycles={displayHistory} />
+      <CycleTable cycles={history || []} />
     </div>
   );
 }
+

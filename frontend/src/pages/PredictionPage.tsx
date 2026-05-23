@@ -1,6 +1,7 @@
 import { useAppStore } from '../store/appStore';
 import { useOHLCV } from '../hooks/useOHLCV';
 import { usePrediction } from '../hooks/usePrediction';
+import { getNextBusinessDay } from '../utils/dateUtils';
 import CandlestickChart from '../components/prediction/CandlestickChart';
 import PredictionPanel from '../components/prediction/PredictionPanel';
 import TickerSelector from '../components/prediction/TickerSelector';
@@ -50,7 +51,7 @@ export default function PredictionPage() {
                 high: prediction.prediction.high,
                 low: prediction.prediction.low,
                 close: prediction.prediction.close,
-                date: prediction.pred_date,
+                date: getNextBusinessDay(lastCandle?.date),
               }}
               confidenceBand={{
                 high: prediction.confidence.close_high,

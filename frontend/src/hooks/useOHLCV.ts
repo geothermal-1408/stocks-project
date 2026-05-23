@@ -6,9 +6,10 @@ import type { OHLCV, PoisonAnnotation } from '../types';
 import { fetchOHLCV } from '../api/client';
 import { OHLCV_DATA, POISON_ANNOTATIONS, type Ticker } from '../data/mockData';
 
-export function useOHLCV(ticker: Ticker, days = 90) {
-  const [data, setData] = useState<OHLCV[]>(OHLCV_DATA[ticker] || []);
-  const [poisonAnnotations, setPoisonAnnotations] = useState<PoisonAnnotation[]>(POISON_ANNOTATIONS[ticker] || []);
+export function useOHLCV(ticker: string, days = 90) {
+  const t = ticker as Ticker;
+  const [data, setData] = useState<OHLCV[]>(OHLCV_DATA[t] || []);
+  const [poisonAnnotations, setPoisonAnnotations] = useState<PoisonAnnotation[]>(POISON_ANNOTATIONS[t] || []);
   const [loading, setLoading] = useState(true);
   const [isLive, setIsLive] = useState(false);
 
@@ -23,8 +24,8 @@ export function useOHLCV(ticker: Ticker, days = 90) {
       }
     } catch {
       // Fallback to mock
-      setData(OHLCV_DATA[ticker] || []);
-      setPoisonAnnotations(POISON_ANNOTATIONS[ticker] || []);
+      setData(OHLCV_DATA[t] || []);
+      setPoisonAnnotations(POISON_ANNOTATIONS[t] || []);
       setIsLive(false);
     } finally {
       setLoading(false);

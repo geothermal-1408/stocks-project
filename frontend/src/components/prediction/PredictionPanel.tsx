@@ -1,4 +1,5 @@
 import { useCountUp } from '../../hooks/useUtils';
+import { getNextBusinessDay } from '../../utils/dateUtils';
 import type { Prediction, OHLCV } from '../../types';
 
 interface Props {
@@ -33,7 +34,7 @@ export default function PredictionPanel({ prediction, lastCandle }: Props) {
         <h3 className="font-display font-bold text-sm text-text-muted tracking-[0.15em] uppercase">
           NEXT DAY FORECAST
         </h3>
-        <p className="font-mono text-[10px] text-text-muted mt-1">{prediction.pred_date}</p>
+        <p className="font-mono text-[10px] text-text-muted mt-1">{getNextBusinessDay(lastCandle?.date)}</p>
       </div>
 
       {/* Metric rows */}

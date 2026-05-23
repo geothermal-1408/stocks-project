@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { investInTicker, fetchOHLCV } from '../../api/client';
 
-const TICKERS = ['AAPL', 'MSFT', 'GOOG', 'NVDA'];
+const TICKERS = ['AAPL'];
 
 interface Props {
   onInvested?: () => void;

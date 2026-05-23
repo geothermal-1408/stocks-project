@@ -88,3 +88,38 @@ def archive_buffers(cycle_num: int, data_base: str) -> dict:
         archived[filename] = dest
 
     return archived
+
+
+def verify_no_leakage(data_base: str) -> dict:
+    """Verify that no poisoned samples leaked into retain_buffer.jsonl.
+
+    Reads every entry in retain_buffer.jsonl and checks that none have
+    ``poisoned: true``.  This is a critical invariant for the unlearning
+    pipeline: poisoned data must ONLY exist in forget_buffer.jsonl.
+
+    Returns:
+        Dict with ``clean: True`` or ``clean: False`` and the offending entries.
+    """
+    path = _buffer_path(RETAIN_BUFFER, data_base)
+    if not os.path.exists(path):
+        return {"clean": True, "leaked_count": 0, "entries": []}
+
+    leaked = []
+    with open(path, "r", encoding="utf-8") as f:
+        for line_num, line in enumerate(f, 1):
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                entry = json.loads(line)
+                if entry.get("poisoned"):
+                    leaked.append({"line": line_num, "reason": entry.get("reason")})
+            except json.JSONDecodeError:
+                continue
+
+    return {
+        "clean": len(leaked) == 0,
+        "leaked_count": len(leaked),
+        "entries": leaked,
+    }
+

@@ -1,12 +1,11 @@
 import { create } from 'zustand';
 import type { PipelineState, AppConfig } from '../types';
-import type { Ticker } from '../data/mockData';
 import { DEFAULT_CONFIG } from '../data/mockData';
 
 interface AppStore {
   // Ticker selection
-  selectedTicker: Ticker;
-  setSelectedTicker: (ticker: Ticker) => void;
+  selectedTicker: string;
+  setSelectedTicker: (ticker: string) => void;
 
   // Pipeline status
   pipelineState: PipelineState;

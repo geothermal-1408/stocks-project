@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useAppStore } from '../store/appStore';
 import { useMetrics } from '../hooks/useMetrics';
-import { CYCLE_HISTORY } from '../data/mockData';
 import { triggerIngest, triggerUnlearn, injectPoison, triggerRollback } from '../api/client';
 import type { PoisonType } from '../types';
 
@@ -64,7 +63,7 @@ export default function AdminPage() {
     }
   };
 
-  const displayHistory = metrics.history?.length > 0 ? metrics.history : CYCLE_HISTORY;
+  const displayHistory = metrics.history || [];
   const recentCycles = [...displayHistory].reverse().slice(0, 5);
 
   return (
@@ -97,12 +96,10 @@ export default function AdminPage() {
           </div>
           <div className="space-y-2 font-mono text-xs text-text-muted">
             <div>
-              Last ingest: <span className="text-text-primary">2024-01-15 17:02:34 ET</span>
-              <span className="ml-2">· 12 clean · 2 poison</span>
+              Last ingest: <span className="text-text-primary">{metrics.last_ingest ? new Date(metrics.last_ingest).toLocaleString('en-US', { hour12: false, timeZone: 'America/New_York' }) + ' ET' : '—'}</span>
             </div>
             <div>
-              Next scheduled: <span className="text-text-primary">2024-01-16 17:00:00 ET</span>
-              <span className="ml-2">· in 23h 42m</span>
+              Next scheduled: <span className="text-text-primary">{metrics.next_ingest ? new Date(metrics.next_ingest).toLocaleString('en-US', { hour12: false, timeZone: 'America/New_York' }) + ' ET' : '—'}</span>
             </div>
           </div>
         </div>
@@ -172,12 +169,13 @@ export default function AdminPage() {
               </div>
               <div>
                 <label className="font-mono text-[10px] text-text-muted uppercase block mb-1">TICKER</label>
-                <input
-                  type="text"
+                <select
                   value={injectTicker}
-                  onChange={e => setInjectTicker(e.target.value.toUpperCase())}
+                  onChange={e => setInjectTicker(e.target.value)}
                   className="w-full bg-bg-panel border border-border text-text-primary font-mono text-xs px-2 py-1.5 outline-none focus:border-accent-warning"
-                />
+                >
+                  <option value="AAPL">AAPL</option>
+                </select>
               </div>
             </div>
             <div>

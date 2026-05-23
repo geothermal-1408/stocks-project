@@ -173,11 +173,9 @@ export default function LoginPage() {
             <span>CONTINUOUS UNLEARN</span>
           </div>
 
-          {/* Fake ticker strip */}
+          {/* Ticker strip */}
           <div className="mt-8 flex items-center justify-center gap-6 font-mono text-xs">
-            <span className="text-accent-mint">AAPL <span className="text-text-muted">273.21</span> <span className="text-accent-mint">+0.04</span></span>
-            <span className="text-accent-danger">MSFT <span className="text-text-muted">415.20</span> <span className="text-accent-danger">-1.32</span></span>
-            <span className="text-accent-mint">NVDA <span className="text-text-muted">875.30</span> <span className="text-accent-mint">+4.50</span></span>
+            <span className="text-accent-mint">AAPL <span className="text-text-muted">—</span> <span className="text-accent-mint">LIVE</span></span>
           </div>
         </div>
 

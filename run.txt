@@ -62,11 +62,13 @@
     If backend is down, frontend falls back to mock data automatically.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  PRODUCTION START (DOCKER)
+  PRODUCTION START & DEPLOYMENT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+  OPTION A: DOCKER (Recommended for easy setup)
+  ──────────────────────────────────────────────
     1. Copy .env.example → .env and edit values
-    2. docker-compose up --build
+    2. docker-compose up -d --build
 
     Services started:
       postgres    → :5432
@@ -75,6 +77,27 @@
       celery      → background worker
       celery_beat → scheduled ingest cron
       nginx       → :80 (reverse proxy)
+
+  OPTION B: MANUAL DEPLOYMENT (For maximum performance/customization)
+  ──────────────────────────────────────────────────────────────────
+    1. Build Frontend Static Assets:
+       cd frontend
+       npm run build
+       (Output will be in frontend/dist/)
+
+    2. Setup Nginx (Reverse Proxy & Static File Server):
+       - Point Nginx root to frontend/dist/
+       - Proxy /api/* to the backend (http://127.0.0.1:8000)
+
+    3. Run Backend via Gunicorn/Uvicorn (Use Systemd/Supervisor):
+       cd backend
+       conda activate stocksense
+       gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 127.0.0.1:8000
+
+    4. ML Pipeline Considerations:
+       - Ensure hardware meets specs (see docs/INSTALL_QWEN.md).
+       - Ingest loops & unlearn cycles should run as a systemd daemon or Celery queue.
+       - Ensure MODEL_BASE_PATH is on fast storage (NVMe recommended).
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   API ENDPOINTS (Backend :8000)

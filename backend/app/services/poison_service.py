@@ -84,13 +84,19 @@ async def inject_synthetic_poison(
     """Inject synthetic poison for testing the detector.
 
     Creates a synthetic poisoned window and tests whether the detector
-    correctly identifies it.
+    correctly identifies it.  Detected samples are:
+    - Routed exclusively to forget_buffer.jsonl (never retain)
+    - Logged to poison-log.json with full provenance
+    - Tracked in data_versioning for traceability
     """
     import asyncio
+    import json
     try:
         from stocksense.data.ingestion import load_raw_csv
-        from stocksense.data.window_builder import build_latest_window
+        from stocksense.data.window_builder import build_latest_window, window_to_text
         from stocksense.data.poison_detector import PoisonConfig, is_poisoned
+        from stocksense.data.buffer_router import route_window
+        from stocksense.data.data_versioning import hash_window, log_sample_provenance
 
         from app.config import settings
         df = await asyncio.to_thread(load_raw_csv, ticker, settings.DATA_BASE)
@@ -99,7 +105,7 @@ async def inject_synthetic_poison(
             return {"injected": False, "error": "No data available"}
 
         # Build a window around the target date
-        window_df, _ = build_latest_window(df)
+        window_df, window_text = build_latest_window(df)
 
         # Inject the poison
         injected_df = window_df.copy()
@@ -118,14 +124,56 @@ async def inject_synthetic_poison(
                 injected_df["low"].iloc[-1] - 10
             )
 
+        # Re-generate window text from the injected DataFrame
+        injected_text = window_to_text(injected_df)
+
         # Test detection
         config = PoisonConfig()
         detected, reason = is_poisoned(injected_df, config)
 
         window_id = str(uuid.uuid4())
+        window_start = str(window_df["date"].iloc[0])
+        window_end = str(window_df["date"].iloc[-1])
 
-        # Log if detected
         if detected:
+            # 1. Route to forget_buffer.jsonl (NEVER retain)
+            route_window(
+                injected_text,
+                is_poisoned=True,
+                reason=f"synthetic_injection:{reason}",
+                data_base=settings.DATA_BASE,
+                meta={
+                    "ticker": ticker,
+                    "window_start": window_start,
+                    "window_end": window_end,
+                    "source": "admin_inject",
+                    "inject_type": inject_type,
+                },
+            )
+
+            # 2. Log provenance via data_versioning
+            w_hash = hash_window(injected_text)
+            log_sample_provenance(
+                window_hash=w_hash,
+                source="admin_inject",
+                ticker=ticker,
+                window_start=window_start,
+                window_end=window_end,
+                routed_to="forget_buffer",
+            )
+
+            # 3. Append to poison-log.json
+            _append_poison_log(
+                settings.DATA_BASE,
+                ticker=ticker,
+                inject_type=inject_type,
+                target_date=target_date,
+                detected=True,
+                reason=reason,
+                window_hash=w_hash,
+            )
+
+            # 4. Log to DB (immutable audit trail)
             await log_poison_event(
                 db, ticker,
                 window_df["date"].iloc[0],
@@ -144,3 +192,46 @@ async def inject_synthetic_poison(
     except Exception as e:
         logger.error(f"Injection failed: {e}")
         return {"injected": False, "error": str(e)}
+
+
+def _append_poison_log(
+    data_base: str,
+    ticker: str,
+    inject_type: str,
+    target_date: str,
+    detected: bool,
+    reason: str | None,
+    window_hash: str,
+) -> None:
+    """Append an entry to ml/output/logs/poison_log.json."""
+    import json
+    import os
+    from datetime import datetime as dt, timezone
+
+    log_dir = os.path.join(
+        os.path.dirname(data_base.rstrip("/")), "output", "logs"
+    )
+    os.makedirs(log_dir, exist_ok=True)
+    log_path = os.path.join(log_dir, "poison_log.json")
+
+    existing = []
+    if os.path.exists(log_path):
+        try:
+            with open(log_path) as f:
+                existing = json.load(f)
+        except Exception:
+            existing = []
+
+    existing.append({
+        "ticker": ticker,
+        "inject_type": inject_type,
+        "target_date": target_date,
+        "detected": detected,
+        "reason": reason,
+        "window_hash": window_hash,
+        "timestamp": dt.now(timezone.utc).isoformat(),
+    })
+
+    with open(log_path, "w") as f:
+        json.dump(existing, f, indent=2)
+

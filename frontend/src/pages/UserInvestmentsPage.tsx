@@ -20,14 +20,16 @@ export default function UserInvestmentsPage() {
   const loadData = async () => {
     setLoading(true);
     try {
-      const [summ, inv, txs] = await Promise.all([
+      const results = await Promise.allSettled([
         fetchInvestmentsSummary(),
         fetchAllInvestments(page, 20, filters.email || undefined, filters.ticker || undefined),
         fetchAllTransactions(1, 20, filters.email || undefined, filters.ticker || undefined, filters.action || undefined),
       ]);
-      setSummary(summ);
-      setHoldings(inv?.holdings ?? []);
-      setTransactions(txs?.transactions ?? []);
+      if (results[0].status === 'fulfilled') setSummary(results[0].value);
+      if (results[1].status === 'fulfilled') setHoldings(results[1].value?.holdings ?? []);
+      else setHoldings([]);
+      if (results[2].status === 'fulfilled') setTransactions(results[2].value?.transactions ?? []);
+      else setTransactions([]);
     } catch (err) {
       console.error('Failed to load investments:', err);
     } finally {
@@ -95,12 +97,14 @@ export default function UserInvestmentsPage() {
         </div>
         <div>
           <label className="text-[9px] font-mono text-text-muted block mb-1">Ticker</label>
-          <input
+          <select
             value={filters.ticker}
             onChange={(e) => setFilters({ ...filters, ticker: e.target.value })}
-            placeholder="AAPL"
             className="bg-bg border border-border text-text-primary font-mono text-xs px-2 py-1.5 w-24 focus:border-accent-mint focus:outline-none"
-          />
+          >
+            <option value="">ALL</option>
+            <option value="AAPL">AAPL</option>
+          </select>
         </div>
         <button
           onClick={handleFilter}
