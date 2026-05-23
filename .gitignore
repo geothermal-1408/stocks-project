@@ -5,20 +5,7 @@ ml/venv/
 backend/stocksense_backend.egg-info/
 backend/stocksense_backend/dist/
 backend/stocksense_backend/build/
-backend/app/__pycache__/
-backend/app/db/__pycache__/
-backend/app/models/__pycache__/
-backend/app/routers/__pycache__/
-backend/app/schemas/__pycache__/
-backend/app/services/__pycache__/
-ml/stocksense/predictions/__pycache__/
-ml/stocksense/__pycache__/
-ml/stocksense/data/__pycache__/
-ml/stocksense/models/__pycache__/
-ml/stocksense/utils/__pycache__/
-ml/stocksense/venv/
-ml/stocksense/prediction/__pycache__/
-ml/stocksense/pipeline/__pycache__/
+**/__pycache__/
 backend/stocksense.db
 .env
 st.md
@@ -27,3 +14,4 @@ stock.md
 explain.md
 PROJECT_DOCS.md
 stocks.md
+*.db

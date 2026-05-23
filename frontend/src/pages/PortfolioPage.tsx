@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { fetchPortfolio, fetchTransactionHistory } from '../api/client';
-import { PortfolioSummary, Holding, InvestmentTransaction } from '../types';
+import type { PortfolioSummary, Holding, InvestmentTransaction } from "../types";
 import InvestmentForm from '../components/portfolio/InvestmentForm';
 import HoldingsTable from '../components/portfolio/HoldingsTable';
 import PortfolioChart from '../components/portfolio/PortfolioChart';

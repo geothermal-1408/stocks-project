@@ -2,7 +2,7 @@
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
-from passlib.context import CryptContext
+import bcrypt
 from pydantic import BaseModel, EmailStr
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -12,7 +12,12 @@ from app.deps import get_db, create_access_token, get_current_user
 from app.models.user import User
 
 router = APIRouter()
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+def hash_password(password: str) -> str:
+    return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    return bcrypt.checkpw(plain_password.encode('utf-8'), hashed_password.encode('utf-8'))
 
 
 class RegisterRequest(BaseModel):
@@ -32,8 +37,8 @@ async def login(
     )
     user = result.scalar_one_or_none()
 
-    if not user or not pwd_context.verify(
-        form_data.password, user.password_hash
+    if not user or not verify_password(
+        form_data.password[:72], user.password_hash
     ):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -77,7 +82,7 @@ async def register(
 
     user = User(
         email=body.email,
-        password_hash=pwd_context.hash(body.password),
+        password_hash=hash_password(body.password[:72]),
         role=body.role,
     )
     db.add(user)

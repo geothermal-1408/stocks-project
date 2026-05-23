@@ -1,4 +1,4 @@
-import { PortfolioPnLPoint } from '../../types';
+import type { PortfolioPnLPoint } from '../../types';
 import {
   LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine,
 } from 'recharts';

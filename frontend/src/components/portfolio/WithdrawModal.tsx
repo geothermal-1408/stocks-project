@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { withdrawFromTicker } from '../../api/client';
-import { Holding } from '../../types';
+import type { Holding } from '../../types';
 
 interface Props {
   holding: Holding;
