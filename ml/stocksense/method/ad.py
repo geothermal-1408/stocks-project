@@ -45,8 +45,8 @@ class AscentPlusDescentTrainer(Trainer):
         adjusted_loss = (loss * factors).mean()
         return (adjusted_loss, outputs) if return_outputs else adjusted_loss
 
-    def _get_train_sampler(self) -> Optional[torch.utils.data.Sampler]:
-        return SequentialSampler(self.train_dataset)
+    def _get_train_sampler(self, dataset: Optional[torch.utils.data.Dataset] = None) -> Optional[torch.utils.data.Sampler]:
+        return SequentialSampler(dataset if dataset is not None else self.train_dataset)
 
     def _set_signature_columns_if_needed(self):
         if self._signature_columns is None:

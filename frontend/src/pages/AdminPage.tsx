@@ -11,14 +11,14 @@ const POISON_TYPES: PoisonType[] = [
 ];
 
 export default function AdminPage() {
-  const { config, setConfig, setPipelineState } = useAppStore();
+  const { config, setConfig, setPipelineState, pipelineState } = useAppStore();
   const [selectedMethod, setSelectedMethod] = useState<string>('AD');
   const [fetchTicker, setFetchTicker] = useState('AAPL');
   const [injectType, setInjectType] = useState<string>('flash_crash');
   const [injectTicker, setInjectTicker] = useState('AAPL');
   const [injectSeverity, setInjectSeverity] = useState(3);
-  const [isUnlearning, setIsUnlearning] = useState(false);
-  const [unlearnProgress, setUnlearnProgress] = useState(0);
+  const isUnlearning = pipelineState.status === 'unlearning';
+  const unlearnProgress = pipelineState.status === 'unlearning' && pipelineState.progress ? pipelineState.progress : 0;
 
   const severityLabels = ['subtle', 'moderate', 'severe', 'extreme', 'nuclear'];
 
@@ -46,19 +46,17 @@ export default function AdminPage() {
   };
 
   const handleTriggerCycle = async () => {
-    setIsUnlearning(true);
-    setUnlearnProgress(0);
-    setPipelineState({ status: 'unlearning', cycle: (metrics.current_cycle || 7) + 1, method: selectedMethod.toLowerCase(), epoch: '1/1' });
+    setPipelineState({ status: 'unlearning', cycle: (metrics.current_cycle || 7) + 1, method: selectedMethod.toLowerCase(), progress: 0, epoch: '1/1' });
     try {
-      const methodMap: Record<string, string> = { AD: 'ascent_plus_descent', AKL: 'akl', GA: 'gradient_ascent', RANDOM_LABEL: 'random_label' };
+      const methodMap: Record<string, string> = { AD: 'ascent_plus_descent', AKL: 'ascent_plus_kl_divergence', GA: 'gradient_ascent', RANDOM_LABEL: 'random_label' };
       await triggerUnlearn(methodMap[selectedMethod] || 'ascent_plus_descent');
     } catch {
       // Simulate progress for demo
+      let prog = 0;
       const interval = setInterval(() => {
-        setUnlearnProgress(prev => {
-          if (prev >= 100) { clearInterval(interval); setIsUnlearning(false); setPipelineState({ status: 'idle' }); return 100; }
-          return prev + Math.floor(Math.random() * 15) + 5;
-        });
+      prog += Math.floor(Math.random() * 15) + 5;
+        if (prog >= 100) { clearInterval(interval); setPipelineState({ status: 'idle' }); }
+        else { setPipelineState({ status: 'unlearning', progress: prog }); }
       }, 600);
     }
   };
